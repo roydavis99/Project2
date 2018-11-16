@@ -27,4 +27,4 @@ const Bands = {
     }
 }
 
-module.exports = Bands;
+module.exports = Bands; 
