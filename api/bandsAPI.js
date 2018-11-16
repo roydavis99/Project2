@@ -1,10 +1,10 @@
 require('dotenv').config();
-const Request = require('request');
+let Request = require('request');
 
-const Bands = {
+let Bands = {
 
     getLatLng: function(bandName, callback){
-        const url = "https://rest.bandsintown.com/artists/" + bandName + "/events?app_id=" + process.env.BANDS_IN_TOWN;
+        let url = "https://rest.bandsintown.com/artists/" + bandName + "/events?app_id=" + process.env.BANDS_IN_TOWN;
         Request(url, (error, response, body) => {
             if(error){
                 console.log(error);
