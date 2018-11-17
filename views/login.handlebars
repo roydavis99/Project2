@@ -2,7 +2,7 @@
   <div class="row align-items-center">
 
     <div class="w-100">
-      <form>
+      <form id="frm-login">
         <h1>Log In</h1>
         <div class="form-group">
           <label for="userName">User Name</label>
@@ -12,10 +12,10 @@
           <label for="password">Password</label>
           <input type="password" class="form-control" id="password" placeholder="Password">
         </div>
-        <button type="submit" class="btn btn-primary">Log In</button>
+        <button id="btn-login" type="submit" class="btn btn-primary">Log In</button>
       </form>
       <hr/>
-      <form>
+      <form id="frm-signUp">
         <h1>Create User</h1>
         <div class="form-group">
           <label for="newUsername">User Name</label>
@@ -30,7 +30,7 @@
           <input type="email" class="form-control" id="newEmail" placeholder="Enter email">
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
-        <button type="submit" class="btn btn-primary">Log In</button>
+        <button id="btn-signUp" type="submit" class="btn btn-primary">Sign up</button>
       </form>
 
       <a href="/">← Back To Home</a>

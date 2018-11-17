@@ -16,21 +16,10 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  /* UserBand.associate = function (models) {
-    models.UserBand.belongsTo(models.User, {
-      onDelete: "CASCADE",
-      foreignKey: {
-        notNull: false
-      }
-    });
-
-    models.UserBand.belongsTo(models.Band, {
-      onDelete: "CASCADE",
-      foreignKey: {
-        notNull: false
-      }
-    });
+  UserBand.associate = function (models) {
+    models.User.belongsToMany(models.Band, { through: UserBand });
+    models.Band.belongsToMany(models.User, { through: UserBand });
   }; 
-  */
+ 
   return UserBand;
 };
