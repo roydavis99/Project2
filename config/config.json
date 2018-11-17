@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "testdb",
+    "password": "root",
+    "database": "bands_in_town",
     "host": "localhost",
     "dialect": "mysql"
   },
