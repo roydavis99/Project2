@@ -1,4 +1,5 @@
 var db = require("../models");
+const bandsInTown = require('../api/bandsAPI');
 
 module.exports = function(app) {
   // Get all examples
@@ -21,4 +22,13 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+
+
+  //This route is a throwAway made by Kevin
+  app.get("/api/:bandName", function(req, res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    bandsInTown.getRouteData(req.params.bandName, data => res.jsonp(data));
+  })
+
 };
