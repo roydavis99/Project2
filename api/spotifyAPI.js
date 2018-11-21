@@ -73,10 +73,5 @@ const spotify = {
 
 }
 
-spotify.getTopTracks('2ye2Wgw4gimLv2eAKyk1NB', data => console.log(data));
-
-
-//band name, homepage, image, genre, top tracks
-
 module.exports = spotify;
 
