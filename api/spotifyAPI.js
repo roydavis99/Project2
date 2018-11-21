@@ -26,8 +26,57 @@ const spotify = {
 
     },
 
-    getInfo: function(){}
+    searchArtists: function (bandName, callback) {
+        this.getAccessToken(process.env.SPOTIFY_ID, process.env.SPOTIFY_SECRET, token => {
+            const spotify = new Spotify();
+            spotify.setAccessToken(token);
+
+            spotify.searchArtists(bandName)
+                .then(data => {
+                    let artists = [];
+                    data = data.body.artists.items;
+                    data.forEach(artist => {
+                        artists.push({
+                            id: artist.id,
+                            name: artist.name,
+                            images: artist.images,
+                            genres: artist.genres,
+                            page: artist.external_urls.spotify
+                        });
+                    })
+                    callback(artists);
+                })
+        })
+    },
+
+    getTopTracks: function (id, callback) {
+        this.getAccessToken(process.env.SPOTIFY_ID, process.env.SPOTIFY_SECRET, token => {
+            const spotify = new Spotify();
+            spotify.setAccessToken(token);
+
+            spotify.getArtistTopTracks(id, 'US')
+                .then(data => {
+                    let tracks = [];
+
+                    data.body.tracks.forEach(track => {
+                        tracks.push({
+                            name: track.name,
+                            popularity: track.popularity,
+                            preview: track.preview_url
+
+                        })
+                    })
+                    callback(tracks);
+                })
+        })
+    }
+
 }
+
+spotify.getTopTracks('2ye2Wgw4gimLv2eAKyk1NB', data => console.log(data));
+
+
+//band name, homepage, image, genre, top tracks
 
 module.exports = spotify;
 
