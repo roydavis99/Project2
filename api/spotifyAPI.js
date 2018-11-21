@@ -35,10 +35,15 @@ const spotify = {
                     let artists = [];
                     data = data.body.artists.items;
                     data.forEach(artist => {
+                        let images = [];
+                        artist.images.forEach(image => {
+                            images.push(image.url);
+                        })
+
                         artists.push({
                             id: artist.id,
                             name: artist.name,
-                            images: artist.images,
+                            image: images[0],
                             genres: artist.genres,
                             page: artist.external_urls.spotify
                         });

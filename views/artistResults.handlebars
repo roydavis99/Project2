@@ -1,0 +1,12 @@
+<div class="row">
+    {{#each artists}}
+        <div class="col">
+            <div class="card">
+                <img class="card-img-top" src="{{this.image}}">
+                <div class="card-body">
+                    <p class="card-text">{{this.genres}}</p>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>

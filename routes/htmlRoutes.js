@@ -21,7 +21,7 @@ module.exports = function (app) {
     }
 
     spotifyApi.searchArtists(bandName, function(artists) {
-      res.render("results", {artists: artists});
+      res.render("artistResults", {artists: artists});
     })
 
   })
