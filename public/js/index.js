@@ -4,6 +4,12 @@ var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
+var sessionId = sessionStorage.getItem("sessionId");
+
+if(sessionId === null){
+  window.location.replace("/login");
+}
+
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function(example) {
