@@ -68,3 +68,29 @@ This is an in depth look at tour information for a user's favorite musicians. Th
 
 -Kevin: Look into Bands in Town and deliver required info to Mike.
 
+
+# Database
+* User
+    - id using UUID
+    - userName varchar(40)
+    - password varchar(40)
+    - displayName varchar(50)
+    - email email
+    - createdAt Datetime
+    - updatedAt Datetime
+    - 
+
+* Bands
+    - id using UUID
+    - bandName
+    - viewCount
+    - favoriteCount
+    - 
+
+* UserBands
+    - id as uuid
+    - userId
+    - bandId
+    - rating int
+    - 
+
