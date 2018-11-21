@@ -20,7 +20,6 @@ const spotify = {
                 Authorization: 'Basic ' + key
             }
         }, function (err, res, body) {
-            console.log(body);
             callback(JSON.parse(body).access_token);
         });
 

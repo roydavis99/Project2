@@ -3,12 +3,13 @@
     <div class="card-header">
       Create an account to access premium features!
     </div>
-    <div class="card-body">
-      <h5 class="card-title">Follow the trail!</h5>
-      <input class="form-control form-control-lg" type="text" placeholder="Your band here">
-
-      <a href="results.html" class="btn btn-primary">Go somewhere</a>
-    </div>
+    <form action="/results" method="POST">
+      <div class="card-body">
+        <h5 class="card-title">Follow the trail!</h5>
+        <input class="form-control form-control-lg" type="text" placeholder="Your band here" name="bandName">
+        <button type="submit" class="btn btn-primary">Go somewhere</button>
+      </div>
+    </form>
   </div>
 </div>
 <div class="card-footer text-muted">

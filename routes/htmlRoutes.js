@@ -1,9 +1,9 @@
 var db = require("../models");
+const spotifyApi = require("../api/spotifyAPI");
 
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    //console.log(req.params.id);
     res.render("index", {
       msg: "Welcome!"
     });
@@ -13,14 +13,18 @@ module.exports = function (app) {
     res.render("login");
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function (req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExamples) {
-      res.render("example", {
-        example: dbExamples
-      });
-    });
-  });
+  app.post("/results", function(req, res) {
+    let bandName = req.body.bandName;
+    if(bandName === null || bandName === undefined || bandName.trim() === ''){
+      res.render("index", {msg: "Please input a search term"})
+      return;
+    }
+
+    spotifyApi.searchArtists(bandName, function(artists) {
+      res.render("results", {artists: artists});
+    })
+
+  })
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
