@@ -11,20 +11,19 @@ module.exports = function (app) {
  
 
   app.get("/api/user/:username", function (req, res) {
+    var log = req.params.username.split("|");
     db.User.findOne({
       where: {
-        username: req.params.username
+        username: log[0],
+        password:log[1]
       }
     }).then(function (dbUser) {
-      console.log(req.params);
-      console.log(dbUser);
       res.json(dbUser);
     });
   });
 
   // Create a new user
   app.post("/api/user", function (req, res) {
-    console.log(req);
     db.User.create(
       req.body  
     ).then(function (dbUser) {
