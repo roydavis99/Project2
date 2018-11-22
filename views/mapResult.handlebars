@@ -1,0 +1,14 @@
+<div id="map" style="height: 80vh; width: 80vw">shiet</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
+    crossorigin="anonymous"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvR0p9pkTlpepgnQbEsCmuQ9F8_rTYSww"></script>
+<script>
+    $(document).ready(function () {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 12
+        });
+    })
+
+</script>
