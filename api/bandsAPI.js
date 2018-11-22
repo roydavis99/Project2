@@ -20,7 +20,8 @@ let Bands = {
                         lat: parseFloat(data.latitude),
                         lng: parseFloat(data.longitude),
                         title: data.name,
-                        cityState: `${data.city}, ${data.region}`
+                        cityState: `${data.city}, ${data.region}`,
+                        location: `${data.name} ${data.city}, ${data.region}`
                     })
                 }
             }

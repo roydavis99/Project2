@@ -5,10 +5,31 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvR0p9pkTlpepgnQbEsCmuQ9F8_rTYSww"></script>
 <script>
     $(document).ready(function () {
+        const route = {{{route}}};
+        directionsService = new google.maps.DirectionsService();
+        directionsDisplay = new google.maps.DirectionsRenderer();
+        let waypoints = [];
+
+        route.shows.forEach(show =>{
+            waypoints.push({
+                location: {lat: show.lat, lng: show.lng}
+            })
+        })
+
         map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: -34.397, lng: 150.644 },
-            zoom: 12
+            zoom: 8
         });
+        directionsDisplay.setMap(map);
+        directionsService.route({
+            origin: {lat: route.origin.lat, lng: route.origin.lng},
+            destination: {lat: route.destination.lat, lng: route.destination.lng},
+            waypoints: waypoints,
+            travelMode: 'DRIVING'
+        }, function(response, status){
+            if(status === 'OK'){
+                directionsDisplay.setDirections(response);
+            }
+        })
     })
 
 </script>
