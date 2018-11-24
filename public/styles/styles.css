@@ -15,3 +15,7 @@ body{
   background-color: blue;
   opacity: .5;
 }
+
+.local-solid{
+  opacity: 1;
+}
