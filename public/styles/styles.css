@@ -8,14 +8,14 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  background-color: black;
+  background-size: cover;
 }
 
-.seeThrew{
+.eseeThrew{
   background-color: blue;
   opacity: .5;
 }
 
-.local-solid{
+.elocal-solid{
   opacity: 1;
 }

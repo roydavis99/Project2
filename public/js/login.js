@@ -1,5 +1,4 @@
 //sessionStorage.setItem("name", username);
-
 function processSignUp(e) {
   if (e.preventDefault) { e.preventDefault(); }
 
