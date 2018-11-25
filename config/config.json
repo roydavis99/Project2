@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "lkjhg098",
     "database": "bands_in_town",
     "host": "localhost",
     "dialect": "mysql"
