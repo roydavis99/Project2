@@ -16,6 +16,6 @@ body{
   opacity: .5;
 }
 
-.elocal-solid{
-  opacity: 1;
+.local-solid{
+  background-color: lightgray;
 }

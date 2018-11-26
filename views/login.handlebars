@@ -1,11 +1,11 @@
 <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
 
-<div class="container w-50 mt-5 local-solid">
+<div class="container w-50 mt-5">
   <div class="row align-items-center">
 
-    <div class="w-100">
-      <form id="frm-login" class="local-solid">
-        <h1 class="local-solid">Log In</h1>
+    <div class="w-100 local-solid">
+      <form id="frm-login">
+        <h1>Log In</h1>
         <div class="form-group">
           <label for="userName">User Name</label>
           <input type="text" class="form-control" id="username" placeholder="Enter User Name">
@@ -16,26 +16,11 @@
         </div>
         <button id="btn-login" type="submit" class="btn btn-primary">Log In</button>
       </form>
-      <hr/>
-      <form id="frm-signUp">
-        <h1>Create User</h1>
-        <div class="form-group">
-          <label for="newUsername">User Name</label>
-          <input type="text" class="form-control" id="newUsername" placeholder="Enter User Name">
-        </div>
-        <div class="form-group">
-          <label for="newPassword">Password</label>
-          <input type="password" class="form-control" id="newPassword" placeholder="Password">
-        </div>
-        <div class="form-group">
-          <label for="newEmail">Email address</label>
-          <input type="email" class="form-control" id="newEmail" placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <button id="btn-signUp" type="submit" class="btn btn-primary">Sign up</button>
-      </form>
-
-      <a href="/">← Back To Home</a>
+      <hr>
+      
+      <div class="text-center">
+        <a href="/signup"><h5>Sign Up</h5></a>
+      </div>
     </div>
 
   </div>

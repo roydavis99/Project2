@@ -15,6 +15,10 @@ module.exports = function (app) {
     res.render("login");
   });
 
+  app.get("/signup", function (req, res) {
+    res.render("signup");
+  });
+
 
   app.post("/results", function (req, res) {
     let bandName = req.body.bandName;

@@ -1,25 +1,33 @@
-<div class="row">
-    {{#each artists}}
-    <div class="col-sm-4 col-lg-3">
-        <div class="card">
-            <div class="card-header">
-                {{this.name}}
-            </div>
-            <img class="card-img-top" src="{{this.image}}">
-            <div class="card-body">
-                <h5>Genres</h5>
-                <ul>
-                    {{#each this.genres}}
-                    <li>{{this}}</li>
-                    {{/each}}
-                </ul>
-                <a href="{{this.page}}" class="btn btn-primary">Spotify Page</a>
-                <form action="/mapResult" method="POST">
-                    <button type="submit" href="{{this.id}}" class="btn btn-danger tour-map">Map Tour</a>
-                    <input hidden type="text" name="bandName" value="{{this.name}}">
-                </form>
+<script src="/js/checklogin.js"></script>
+
+<div class="container jumbotron text-center">
+    <h1>Top 20 Results</h1>
+</div>
+<div class="container">
+    <div class="row">
+        {{#each artists}}
+        <div class="col-sm-4 col-lg-3 my-3">
+            <div class="card">
+                <h4 class="card-header">
+                    {{this.name}}
+                </h4>
+                <img class="card-img-top" src="{{this.image}}" height="150" width="100">
+                <div class="card-body">
+                    {{!-- <h5>Genres</h5>
+                    <ul>
+                        {{#each this.genres}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul> --}}
+                    <a href="{{this.page}}" class="btn btn-primary">Spotify Page</a>
+                    <form action="/mapResult" method="POST">
+                        <button type="submit" href="{{this.id}}" class="btn btn-danger tour-map">Map Tour</a>
+                            <input hidden type="text" name="bandName" value="{{this.name}}">
+                    </form>
+                    <button class="btn">Like</button>
+                </div>
             </div>
         </div>
+        {{/each}}
     </div>
-    {{/each}}
 </div>
