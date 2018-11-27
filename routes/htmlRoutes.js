@@ -40,8 +40,21 @@ module.exports = function (app) {
       return;
     }
 
-    bandApi.getRouteData(bandName, function(route) {
-      res.render("mapResult", {route: JSON.stringify(route)});
+    bandApi.getRouteData(bandName, function (route) {
+      if (route)
+        res.render("mapResult", { route: JSON.stringify(route), bandName: bandName, });
+      else
+        res.render("mapResult", {
+          bandName: bandName,
+          message: "This band has no scheduled tour dates."
+        })
+    })
+  })
+
+  app.get("/songs", function(req, res){
+    const id = req.query.id;
+    spotifyApi.getTopTracks(id, function(tracks){
+      res.json(tracks);
     })
   })
 
