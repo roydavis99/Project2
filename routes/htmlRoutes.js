@@ -51,6 +51,13 @@ module.exports = function (app) {
     })
   })
 
+  app.get("/songs", function(req, res){
+    const id = req.query.id;
+    spotifyApi.getTopTracks(id, function(tracks){
+      res.json(tracks);
+    })
+  })
+
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");
