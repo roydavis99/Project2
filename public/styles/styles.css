@@ -1,3 +1,11 @@
 .list-group-item {
   line-height: 2.5;
 }
+#map{
+  margin-top: 30px;
+  margin-left: 125px;
+}
+#body{
+  background-color: fuchsia
+}
+
