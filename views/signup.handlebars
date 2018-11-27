@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
+
+<div class="container w-50 mt-5">
+  <div class="row align-items-center">
+
+    <div class="w-100 local-solid">
+      <form id="frm-signUp">
+        <h1>Create User</h1>
+        <div class="form-group">
+          <label for="newUsername">User Name</label>
+          <input type="text" class="form-control" id="newUsername" placeholder="Enter User Name">
+        </div>
+        <div class="form-group">
+          <label for="newPassword">Password</label>
+          <input type="password" class="form-control" id="newPassword" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <label for="newEmail">Email address</label>
+          <input type="email" class="form-control" id="newEmail" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <button id="btn-signUp" type="submit" class="btn btn-primary">Sign up</button>
+      </form>
+      <hr>
+      
+      <div class="text-center">
+        <a href="/login"><h5>Login</h5></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="/js/signup.js"></script>

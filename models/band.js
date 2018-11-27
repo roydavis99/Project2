@@ -10,8 +10,14 @@ module.exports = function (sequelize, DataTypes) {
       notNull: true,
 
     },
-    viewCount: {
-      type: DataTypes.INTEGER
+    bio: {
+      type: DataTypes.TEXT
+    },
+    image: {
+      type: DataTypes.STRING
+    },
+    link: {
+      type: DataTypes.STRING
     }
   });
 

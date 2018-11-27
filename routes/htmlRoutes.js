@@ -1,6 +1,7 @@
+
 var db = require("../models");
-const spotifyApi = require("../api/spotifyAPI");
-const bandApi = require('../api/bandsAPI');
+var spotifyApi = require("../api/spotifyAPI");
+var bandApi = require('../api/bandsAPI');
 
 module.exports = function (app) {
   // Load index page
@@ -14,18 +15,23 @@ module.exports = function (app) {
     res.render("login");
   });
 
+  app.get("/signup", function (req, res) {
+    res.render("signup");
+  });
+
+
   app.post("/results", function (req, res) {
     let bandName = req.body.bandName;
     if (bandName === null || bandName === undefined || bandName.trim() === '') {
-      res.render("index", { msg: "Please input a search term" })
+      res.render("index", { msg: "Please input a search term" });
       return;
     }
 
     spotifyApi.searchArtists(bandName, function (artists) {
       res.render("artistResults", { artists: artists });
-    })
+    });
 
-  })
+  });
 
   app.post("/mapResult", function (req, res) {
     let bandName = req.body.bandName;
