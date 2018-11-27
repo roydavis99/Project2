@@ -45,7 +45,9 @@ const spotify = {
                             name: artist.name,
                             image: images[0],
                             genres: artist.genres,
-                            page: artist.external_urls.spotify
+                            page: artist.external_urls.spotify,
+                            hasImage: images[0] === undefined ? false : true,
+                            totalFollowers: artist.followers.total
                         });
                     })
                     callback(artists);
