@@ -11,20 +11,19 @@
                 <h4 class="card-header">
                     {{this.name}}
                 </h4>
-                <img class="card-img-top" src="{{this.image}}" height="150" width="100">
+                {{#if this.hasImage}}
+                    <img class="card-img-top" src="{{this.image}}" height="150" width="100">
+                {{else}}
+                    <img class="card-img-top" src="/styles/images/band-name.jpeg" height="150" width="100">
+                {{/if}}
                 <div class="card-body">
-                    {{!-- <h5>Genres</h5>
-                    <ul>
-                        {{#each this.genres}}
-                        <li>{{this}}</li>
-                        {{/each}}
-                    </ul> --}}
                     <a href="{{this.page}}" class="btn btn-primary">Spotify Page</a>
                     <form action="/mapResult" method="POST">
                         <button type="submit" href="{{this.id}}" class="btn btn-danger tour-map">Map Tour</a>
                             <input hidden type="text" name="bandName" value="{{this.name}}">
                     </form>
-                    <button id="btn-like" class="btn" data-id="{{this.id}}" data-name="{{this.name}}" data-image="{{this.image}}" data-page="{{this.page}}">Like</button>
+                    <button id="btn-like" class="btn" data-id="{{this.id}}" data-name="{{this.name}}" data-image="{{this.image}}"
+                        data-page="{{this.page}}">Like</button>
                 </div>
             </div>
         </div>
