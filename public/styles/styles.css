@@ -1,6 +1,7 @@
 .list-group-item {
   line-height: 2.5;
 }
+<<<<<<< HEAD
 
 body{
   /* background-image: url("https://steemitimages.com/p/3HaJVvr6qfoEFgBir1jy4DeK1wwhDm7oNHzc1b8roaJY8MKgxNFQXS6QeWjTctBJbRUt9hZFfHEGaM1jNATBSDbN8HtmB36GqbGGWB8?format=match&mode=fit"); */
@@ -19,3 +20,13 @@ body{
 .local-solid{
   background-color: lightgray;
 }
+=======
+#map{
+  margin-top: 30px;
+  margin-left: 125px;
+}
+#body{
+  background-color: fuchsia
+}
+
+>>>>>>> ea19b39bf8588798fa88a8e234a844a4f897dba0
