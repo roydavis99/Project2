@@ -39,26 +39,4 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
 <script src="/js/artistResults.js"></script>
-
-<script>
-    $(document).ready(function(){
-        $(document).on('click', '.show-top-songs', function(event){
-            let id = $(this).val();
-            $('#top-songs-' + id).empty();
-            $.ajax({
-                url: "/songs",
-                method: "GET",
-                data: {
-                    id: id
-                }
-            })
-            .then(result => {
-                let ul = $('<ul>');
-                result.forEach(track => {
-                    ul.append($(`<p>${track.name}</p><audio controls src="${track.preview}"></audio>`));
-                })
-                $('#top-songs-' + $(this).val()).append(ul);
-            });
-        })
-    })
-</script>
+<script src="/js/topSongs.js"></script>
