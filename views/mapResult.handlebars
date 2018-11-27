@@ -1,42 +1,43 @@
-
 <script src="/js/checklogin.js"></script>
 
 
-<div class="body">
-<div class="mapContainer">
-<div id="map" style="height: 80vh; width: 80vw">shiet</div>
-</div>
+<div class="body mb-5">
+    <div class="mapContainer">
+        <div id="map" style="height: 80vh; width: 80vw" data-route="{{{route}}}">shiet</div>
+    </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
     crossorigin="anonymous"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvR0p9pkTlpepgnQbEsCmuQ9F8_rTYSww"></script>
-<script>
-    $(document).ready(function () {
-        const route = {{{route}}};
-        directionsService = new google.maps.DirectionsService();
-        directionsDisplay = new google.maps.DirectionsRenderer();
-        let waypoints = [];
+<script >
 
-        route.shows.forEach(show =>{
-            waypoints.push({
-                location: {lat: show.lat, lng: show.lng}
-            })
-        })
+$(document).ready(function () {
+  var route = {{{route}}};
+  directionsService = new google.maps.DirectionsService();
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  let waypoints = [];
 
-        map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 8
-        });
-        directionsDisplay.setMap(map);
-        directionsService.route({
-            origin: {lat: route.origin.lat, lng: route.origin.lng},
-            destination: {lat: route.destination.lat, lng: route.destination.lng},
-            waypoints: waypoints,
-            travelMode: 'DRIVING'
-        }, function(response, status){
-            if(status === 'OK'){
-                directionsDisplay.setDirections(response);
-            }
-        })
+  route.shows.forEach(show => {
+    waypoints.push({
+      location: { lat: show.lat, lng: show.lng }
     })
+  })
 
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8
+  });
+  directionsDisplay.setMap(map);
+  directionsService.route({
+    origin: { lat: route.origin.lat, lng: route.origin.lng },
+    destination: { lat: route.destination.lat, lng: route.destination.lng },
+    waypoints: waypoints,
+    travelMode: 'DRIVING'
+  }, function (response, status) {
+    if (status === 'OK') {
+      directionsDisplay.setDirections(response);
+    }
+  });
+});
 </script>
+
+<script src="/js/mapResult.js"></script>
