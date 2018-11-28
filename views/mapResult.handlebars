@@ -18,14 +18,17 @@
   $(document).ready(function () {
     var route = {{{ route }}};
   directionsService = new google.maps.DirectionsService();
-  directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
+  directionsDisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
   let waypoints = [];
 
+  showCount = 0;
   route.shows.forEach(show => {
-    waypoints.push({
-      location: { lat: show.lat, lng: show.lng }
-    })
-  })
+    if (showCount < 23)
+      waypoints.push({
+        location: { lat: show.lat, lng: show.lng }
+      })
+    showCount++;
+  });
 
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8
@@ -43,13 +46,16 @@
     }
   });
 
+  markerCount = 1;
   route.shows.forEach(show => {
     let marker = new google.maps.Marker({
       position: { lat: show.lat, lng: show.lng },
       map: map,
       visible: true,
       title: `${show.title}\n${show.cityState}`,
+      label: `${markerCount}`
     })
+    markerCount++;
   })
 });
 </script>
