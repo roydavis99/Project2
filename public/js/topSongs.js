@@ -1,5 +1,6 @@
-$(document).ready(function(){
-    $(document).on('click', '.show-top-songs', function(event){
+$(document).ready(function () {
+    $(document).on('click', '.show-top-songs', function (event) {
+        console.log('clickety clack!');
         let id = $(this).val();
         $('#top-songs-' + id).empty();
         $.ajax({
@@ -9,12 +10,16 @@ $(document).ready(function(){
                 id: id
             }
         })
-        .then(result => {
-            let ul = $('<ul>');
-            result.forEach(track => {
-                ul.append($(`<p>${track.name}</p><audio controls src="${track.preview}"></audio>`));
-            })
-            $('#top-songs-' + $(this).val()).append(ul);
-        });
+            .then(result => {
+                let ul = $('<ul>');
+                let count = 0;
+                result.forEach(track => {
+                    if (count < 3) {
+                        ul.append($(`<p>${track.name}</p><audio controls src="${track.preview}"></audio>`));
+                    }
+                    count++;
+                })
+                $('#top-songs-' + $(this).val()).append(ul);
+            });
     })
 })
