@@ -27,3 +27,14 @@ body{
   background-color: fuchsia
 }
 
+footer{
+  position: absolute;
+  width: 100%;
+}
+
+#mapContainer{
+  background-image: url(https://i.ebayimg.com/images/i/281843686278-0-1/s-l1000.jpg);
+  background-size: cover;
+  
+}
+
