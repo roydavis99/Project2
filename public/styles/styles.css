@@ -27,3 +27,7 @@ body{
   background-color: fuchsia
 }
 
+.band-card{
+  min-width: 380px !important;
+  margin: 20px !important;
+}
