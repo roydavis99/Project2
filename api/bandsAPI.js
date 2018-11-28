@@ -27,12 +27,17 @@ let Bands = {
             }
 
 
+            if (shows.length > 0) {
+                callback({
+                    origin: shows.splice(0, 1)[0],
+                    destination: shows.splice(shows.length - 1, 1)[0],
+                    shows: shows
+                })
+            }
 
-            callback({
-                origin: shows.splice(0,1)[0],
-                destination: shows.splice(shows.length - 1, 1)[0],
-                shows: shows
-            })
+            else{
+                callback(false);
+            }
         })
     }
 }
