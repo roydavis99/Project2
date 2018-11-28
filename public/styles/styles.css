@@ -1,6 +1,24 @@
 .list-group-item {
   line-height: 2.5;
 }
+body{
+  /* background-image: url("https://steemitimages.com/p/3HaJVvr6qfoEFgBir1jy4DeK1wwhDm7oNHzc1b8roaJY8MKgxNFQXS6QeWjTctBJbRUt9hZFfHEGaM1jNATBSDbN8HtmB36GqbGGWB8?format=match&mode=fit"); */
+  background-image: url("../images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.eseeThrew{
+  background-color: blue;
+  opacity: .5;
+}
+
+.local-solid{
+  background-color: lightgray;
+}
+
 #map{
   margin-top: 30px;
   margin-left: 125px;
