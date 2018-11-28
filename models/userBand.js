@@ -6,10 +6,13 @@ module.exports = function (sequelize, DataTypes) {
       defaultValue: DataTypes.UUIDV1
     },
     BandId: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      notNull: true
+      
     },
     UserId: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      notNull: true
     },
     rating: {
       type: DataTypes.SMALLINT
