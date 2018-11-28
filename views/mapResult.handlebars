@@ -18,7 +18,7 @@
   $(document).ready(function () {
     var route = {{{ route }}};
   directionsService = new google.maps.DirectionsService();
-  directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
   let waypoints = [];
 
   route.shows.forEach(show => {
@@ -27,9 +27,10 @@
     })
   })
 
-  map = new google.maps.Map(document.getElementById('map'), {
+  var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8
   });
+
   directionsDisplay.setMap(map);
   directionsService.route({
     origin: { lat: route.origin.lat, lng: route.origin.lng },
@@ -41,6 +42,15 @@
       directionsDisplay.setDirections(response);
     }
   });
+
+  route.shows.forEach(show => {
+    let marker = new google.maps.Marker({
+      position: { lat: show.lat, lng: show.lng },
+      map: map,
+      visible: true,
+      title: `${show.title}\n${show.cityState}`,
+    })
+  })
 });
 </script>
 
