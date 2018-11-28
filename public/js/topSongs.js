@@ -1,6 +1,5 @@
 $(document).ready(function () {
     $(document).on('click', '.show-top-songs', function (event) {
-        console.log('clickety clack!');
         let id = $(this).val();
         $('#top-songs-' + id).empty();
         $.ajax({
