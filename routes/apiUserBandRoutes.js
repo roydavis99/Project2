@@ -3,8 +3,8 @@ var db = require("../models");
 module.exports = function (app) {
   app.get("/api/userband/:bandId", function (req, res) {
     db.UserBand.findAll({
-      where:{
-        bandId: req.params.bandId
+      where: {
+        BandId: req.params.bandId
       }
     }).then(function (dbUserBand) {
       res.json(dbUserBand);
@@ -19,27 +19,30 @@ module.exports = function (app) {
     ).then(function (dbUserBand) {
       res.json(dbUserBand);
     });
+  });
 
-    // PUT route for updating user
-    app.put("/api/userband", function (req, res) {
-      db.UserBand.update(req.body, {
-        where: {
-          userId: req.body.userId,
-          bandId: req.body.bandId
-        }
-      }).then(function (dbUserBand) {
-        res.json(dbUserBand);
-      });
+  // PUT route for updating user
+  app.put("/api/userband", function (req, res) {
+    db.UserBand.update(req.body, {
+      where: {
+        UserId: req.body.userId,
+        BandId: req.body.bandId
+      }
+    }).then(function (dbUserBand) {
+      res.json(dbUserBand);
     });
+  });
 
-    // Delete a user by id
-    app.delete("/api/userband/:userid:bandid", function (req, res) {
-      db.UserBand.destroy({ where: { 
-        userId: req.params.userid,
-        bandId: req.params.bandid
-      } }).then(function (dbUserBand) {
-        res.json(dbUserBand);
-      });
+  // Delete a user by id
+  app.delete("/api/userband/:ids", function (req, res) {
+    var ids = req.params.ids.split("|");
+    db.UserBand.destroy({
+      where: {
+        UserId: ids[0],
+        BandId: ids[1]
+      }
+    }).then(function (dbUserBand) {
+      res.json(dbUserBand);
     });
   });
 };
