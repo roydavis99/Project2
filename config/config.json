@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
-    "database": "bands_in_town",
-    "host": "localhost",
+    "username": "bd27a471ae2d25",
+    "password": "ee0cbd77",
+    "database": "heroku_9df8be4939c3a2e",
+    "host": "us-cdbr-iron-east-01.cleardb.net",
     "dialect": "mysql"
   },
   "test": {
@@ -15,7 +15,10 @@
     "logging": false
   },
   "production": {
-    "use_env_variable": "JAWSDB_URL",
+    "username": "bd27a471ae2d25",
+    "password": "ee0cbd77",
+    "database": "heroku_9df8be4939c3a2e",
+    "host": "us-cdbr-iron-east-01.cleardb.net",
     "dialect": "mysql"
   }
 }
