@@ -9,7 +9,7 @@
         {{#each artists}}
         <div class="col accordion band-card" id="accordion-{{this.id}}">
             <div class="card">
-=======
+
                 <div class="card-header" id="heading-one">
                     <h4>
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#one-{{this.id}}"
@@ -25,26 +25,27 @@
                         {{else}}
                         <img class="card-img-top img-fluid" src="/styles/images/band-name.jpeg" height="150" width="100">
                         {{/if}}
-                        <a href="{{this.page}}" class="btn btn-primary">Spotify Page</a>
+                        <a href="{{this.page}}" class="btn btn-primary"><i class="fab fa-spotify"></i></a>
                         <form action="/mapResult" method="POST">
                             <button type="submit" href="{{this.id}}" class="btn btn-danger tour-map">Map Tour</a>
                                 <input hidden type="text" name="bandName" value="{{this.name}}">
                         </form>
-                        <button id="btn-like" class="btn" data-id="{{this.id}}" data-name="{{this.name}}" data-image="{{this.image}}"
-                            data-page="{{this.page}}">Like</button>
+                        <button id="btn-like" class="btn btn-success" data-id="{{this.id}}" data-name="{{this.name}}" data-image="{{this.image}}"
+                            data-page="{{this.page}}"><i class="far fa-thumbs-up"></i></button>
+                            <button id="button-rate" class="btn btn-warning"><i class="fas fa-star-half-alt"></i></button>
                     </div>
                 </div>
                 <div class="card-header" id="heading-two">
                     <h4>
                         <button class="show-top-songs btn btn-link collapsed" type="button" data-toggle="collapse"
                             data-target="#two-{{this.id}}" aria-expanded="false" aria-controls="two-{{this.id}}" value="{{this.id}}">
-                            Top Songs
+                            <i class="fas fa-music"></i>
                         </button>
                     </h4>
                 </div>
                 <div id="two-{{this.id}}" class="collapse show" aria-labelledby="heading-two" data-parent="#accordion-{{this.id}}">
                     <div id="top-songs-{{this.id}}"></div>
->>>>>>> master
+
                 </div>
             </div>
         </div>
