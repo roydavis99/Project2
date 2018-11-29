@@ -1,5 +1,6 @@
 require('dotenv').config();
 let Request = require('request');
+const Moment = require('moment');
 
 let Bands = {
 
@@ -15,13 +16,12 @@ let Bands = {
             for (show in body) {
                 const data = body[show].venue;
                 if (data.name !== undefined && data.latitude !== undefined && data.longitude !== undefined && data.country === 'United States') {
-
                     shows.push({
                         lat: parseFloat(data.latitude),
                         lng: parseFloat(data.longitude),
                         title: data.name,
                         cityState: `${data.city}, ${data.region}`,
-                        location: `${data.name} ${data.city}, ${data.region}`
+                        location: `${data.name} ${data.city}, ${data.region}`,
                     })
                 }
             }
@@ -35,7 +35,7 @@ let Bands = {
                 })
             }
 
-            else{
+            else {
                 callback(false);
             }
         })
