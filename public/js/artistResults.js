@@ -9,21 +9,21 @@ function CreateLike(userId, bandId) {
       }
     }).then(function (data) {
       console.log(data);
-      
+
     });
   } catch (error) {
     console.log(error);
   }
 }
 
-function UpdateRate(userId, bandId, rate){
+function UpdateRate(userId, bandId, rate) {
   try {
     $.ajax({
       method: "GET",
       url: "api/userband/ids/" + userId + "|" + bandId
     }).then(function (data) {
       console.log(data);
-      if(data !== null){
+      if (data !== null) {
         console.log("put: " + rate);
         $.ajax({
           method: "PUT",
@@ -36,7 +36,7 @@ function UpdateRate(userId, bandId, rate){
         }).then(function (data) {
           console.log(data);
         });
-      }else{
+      } else {
         $.ajax({
           method: "POST",
           url: "api/userband/",
@@ -47,23 +47,48 @@ function UpdateRate(userId, bandId, rate){
           }
         }).then(function (data) {
           console.log(data);
-          
+
         });
       }
     });
-    
+
   } catch (error) {
     console.log(error);
   }
 }
-
+function FixName(name) {
+  name = name.replace("&", "");
+  name = name.replace("/", "");
+  name = name.replace("@", "");
+  name = name.replace("#", "");
+  name = name.replace("$", "");
+  name = name.replace("%", "");
+  name = name.replace("^", "");
+  name = name.replace("*", "");
+  name = name.replace("(", "");
+  name = name.replace(")", "");
+  name = name.replace("[", "");
+  name = name.replace("{", "");
+  name = name.replace("}", "");
+  name = name.replace("]", "");
+  name = name.replace("|", "");
+  name = name.replace("\\", "");
+  name = name.replace(":", "");
+  name = name.replace(";", "");
+  name = name.replace("?", "");
+  name = name.replace("<", "");
+  name = name.replace(">", "");
+  name = name.replace("`", "");
+  name = name.replace("~", "");
+  return name;
+}
 //function CreateBand
 
 $(document).on("click", ".db-rating", function () {
   //get userid
   var userid = sessionStorage.getItem("sessionId");
   var rate = $(this).attr("data-rating");
-  var bandName = $(this).attr("data-name");
+  var bandName = FixName($(this).attr("data-name"));
   var bandImage = $(this).attr("data-image");
   var bandPage = $(this).attr("data-page");
 
@@ -77,7 +102,6 @@ $(document).on("click", ".db-rating", function () {
       method: "GET",
       url: "api/band/byname/" + bandName
     }).then(function (band) {
-      console.log(band);
       //band exists
       if (band === null) {
         $.ajax({
@@ -115,7 +139,7 @@ $(document).on("click", "#btn-like", function () {
   }
 
   //var bandId = $(this).attr("data-id");
-  var bandName = $(this).attr("data-name");
+  var bandName = FixName($(this).attr("data-name"));
   var bandImage = $(this).attr("data-image");
   var bandPage = $(this).attr("data-page");
   try {
@@ -123,7 +147,6 @@ $(document).on("click", "#btn-like", function () {
       method: "GET",
       url: "api/band/byname/" + bandName
     }).then(function (band) {
-      console.log(band);
       //band exists
       if (band === null) {
         $.ajax({
