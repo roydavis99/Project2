@@ -27,7 +27,6 @@ body{
   background-color: fuchsia
 }
 
-<<<<<<< HEAD
 footer{
   position: absolute;
   width: 100%;
@@ -39,9 +38,7 @@ footer{
   
 }
 
-=======
 .band-card{
   min-width: 380px !important;
   margin: 20px !important;
 }
->>>>>>> master
