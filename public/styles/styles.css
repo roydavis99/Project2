@@ -21,7 +21,7 @@ body{
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto 120px;
+  margin: 0 auto -220px;
 }
 
 .eseeThrew{
@@ -42,7 +42,7 @@ body{
 }
 
 footer, .footer-push{
-  height: 210px;
+  height: 220px;
   width: 100%;
 }
 
