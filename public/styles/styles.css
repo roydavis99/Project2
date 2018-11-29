@@ -8,6 +8,7 @@ body{
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
+  position: relative;
 }
 
 .eseeThrew{
@@ -28,7 +29,7 @@ body{
 }
 
 footer{
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
 }
