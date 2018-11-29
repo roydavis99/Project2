@@ -11,6 +11,19 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/userband/ids/:ids", function (req, res) {
+    
+    var ids = req.params.ids.split("|");
+    db.UserBand.findOne({
+      where: {
+        BandId: ids[1],
+        UserId: ids[0]
+      }
+    }).then(function (dbUserBand) {
+      res.json(dbUserBand);
+    });
+  });
+
   // Create a new user
   app.post("/api/userband", function (req, res) {
     console.log(req);
@@ -23,10 +36,10 @@ module.exports = function (app) {
 
   // PUT route for updating user
   app.put("/api/userband", function (req, res) {
-    db.UserBand.update(req.body, {
+    db.UserBand.update({rating:req.body.rating}, {
       where: {
-        UserId: req.body.userId,
-        BandId: req.body.bandId
+        UserId: req.body.UserId,
+        BandId: req.body.BandId
       }
     }).then(function (dbUserBand) {
       res.json(dbUserBand);
