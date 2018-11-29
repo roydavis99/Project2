@@ -23,10 +23,10 @@ module.exports = function (app) {
 
   // PUT route for updating user
   app.put("/api/userband", function (req, res) {
-    db.UserBand.update(req.body, {
+    db.UserBand.update({rating:req.body.rating}, {
       where: {
-        UserId: req.body.userId,
-        BandId: req.body.bandId
+        UserId: req.body.UserId,
+        BandId: req.body.BandId
       }
     }).then(function (dbUserBand) {
       res.json(dbUserBand);

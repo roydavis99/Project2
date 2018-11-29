@@ -1,4 +1,3 @@
-
 <script src="/js/checklogin.js"></script>
 
 <div class="container jumbotron text-center">
@@ -12,8 +11,8 @@
 
                 <div class="card-header" id="heading-one">
                     <h4>
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#one-{{this.id}}"
-                            aria-expanded="true" aria-controls="one-{{this.id}}">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#one-{{this.id}}" aria-expanded="true"
+                            aria-controls="one-{{this.id}}">
                             {{this.name}}
                         </button>
                     </h4>
@@ -21,24 +20,37 @@
                 <div id="one-{{this.id}}" class="collapse show" aria-labelledby="heading-one" data-parent="#accordion-{{this.id}}">
                     <div class="card-body">
                         {{#if this.hasImage}}
-                        <img class="card-img-top img-fluid" src="{{this.image}}" height="150" width="100">
-                        {{else}}
-                        <img class="card-img-top img-fluid" src="/styles/images/band-name.jpeg" height="150" width="100">
-                        {{/if}}
-                        <a href="{{this.page}}" class="btn btn-primary"><i class="fab fa-spotify"></i></a>
+                        <img class="card-img-top img-fluid" src="{{this.image}}" height="150" width="100"> {{else}}
+                        <img class="card-img-top img-fluid" src="/styles/images/band-name.jpeg" height="150" width="100"> {{/if}}
+                        <a href="{{this.page}}" class="btn btn-primary">
+                            <i class="fab fa-spotify"></i>
+                        </a>
                         <form action="/mapResult" method="POST">
                             <button type="submit" href="{{this.id}}" class="btn btn-danger tour-map">Map Tour</a>
                                 <input hidden type="text" name="bandName" value="{{this.name}}">
                         </form>
-                        <button id="btn-like" class="btn btn-success" data-id="{{this.id}}" data-name="{{this.name}}" data-image="{{this.image}}"
-                            data-page="{{this.page}}"><i class="far fa-thumbs-up"></i></button>
-                            <button id="button-rate" class="btn btn-warning"><i class="fas fa-star-half-alt"></i></button>
+                        <button id="btn-like" class="btn btn-success" data-id="{{this.dbBandId}}" data-name="{{this.name}}" data-image="{{this.image}}"
+                            data-page="{{this.page}}">
+                            <i class="far fa-thumbs-up"></i>
+                        </button>
+                        </button>
+                        <div class="btn-group">
+                            <button class="btn btn-warning db-rating" data-rating="1" data-bandid="{{this.dbBandId}}"><i class="fas fa-star-half-alt"></i></button>
+                            <button class="btn btn-warning db-rating" data-rating="2" data-bandid="{{this.dbBandId}}">
+                            <i class="fas fa-star-half-alt"></i></button>
+                            <button class="btn btn-warning db-rating" data-rating="3" data-bandid="{{this.dbBandId}}">
+                            <i class="fas fa-star-half-alt"></i></button>
+                            <button class="btn btn-warning db-rating" data-rating="4" data-bandid="{{this.dbBandId}}">
+                            <i class="fas fa-star-half-alt"></i></button>
+                            <button class="btn btn-warning db-rating" data-rating="5" data-bandid="{{this.dbBandId}}">
+                            <i class="fas fa-star-half-alt"></i></button>
+                        </div>
                     </div>
                 </div>
                 <div class="card-header" id="heading-two">
                     <h4>
-                        <button class="show-top-songs btn btn-link collapsed" type="button" data-toggle="collapse"
-                            data-target="#two-{{this.id}}" aria-expanded="false" aria-controls="two-{{this.id}}" value="{{this.id}}">
+                        <button class="show-top-songs btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#two-{{this.id}}"
+                            aria-expanded="false" aria-controls="two-{{this.id}}" value="{{this.id}}">
                             <i class="fas fa-music"></i>
                         </button>
                     </h4>
