@@ -37,9 +37,9 @@ module.exports = function (app) {
   });
 
   function BandSetup(artists, count, resu) {
-    console.log(count + " " + artists.length);
+    console.log("COUNT: ", count + " " + artists.length);
     if (count === artists.length) {
-      console.log(artists);
+      console.log("Artists: ", artists);
 
       resu.render("artistResults", { artists: artists });
       return;
@@ -48,7 +48,7 @@ module.exports = function (app) {
     artists[count].dbBandId = null;
     Request({
       method: 'GET',
-      url: 'http://localhost:3000/api/band/byname/' + artists[count].name
+      url: 'https://bands-on-tour.herokuapp.com/api/band/byname/' + artists[count].name
     }, function (err, res, body) {
       if (body !== 'null') {
         body = JSON.parse(body);
@@ -56,7 +56,7 @@ module.exports = function (app) {
 
         Request({
           method: "GET",
-          url: "http://localhost:3000/api/userband/" + body.id
+          url: "https://bands-on-tour.herokuapp.com/api/userband/" + body.id
         }, function (ubError, ubRes, ubBody) {
           ubBody = JSON.parse(ubBody);
 

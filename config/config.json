@@ -7,10 +7,10 @@
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "testdb",
-    "host": "localhost",
+    "username": "bd27a471ae2d25",
+    "password": "ee0cbd77",
+    "database": "heroku_9df8be4939c3a2e",
+    "host": "us-cdbr-iron-east-01.cleardb.net",
     "dialect": "mysql",
     "logging": false
   },
