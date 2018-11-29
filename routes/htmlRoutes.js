@@ -2,6 +2,8 @@
 var db = require("../models");
 var spotifyApi = require("../api/spotifyAPI");
 var bandApi = require('../api/bandsAPI');
+var Request = require('request');
+
 
 module.exports = function (app) {
   // Load index page
@@ -28,10 +30,68 @@ module.exports = function (app) {
     }
 
     spotifyApi.searchArtists(bandName, function (artists) {
-      res.render("artistResults", { artists: artists });
+      artists = BandSetup(artists, 0, res);
+      console.log("here");
     });
 
   });
+
+  function BandSetup(artists, count, resu) {
+    console.log(count + " " + artists.length);
+    if (count === artists.length) {
+      console.log(artists);
+
+      resu.render("artistResults", { artists: artists });
+      return;
+    }
+    artists[count].rating = { one: 0, two: 0, three: 0, four: 0, five: 0 };
+    artists[count].dbBandId = null;
+    Request({
+      method: 'GET',
+      url: 'http://localhost:3000/api/band/byname/' + artists[count].name
+    }, function (err, res, body) {
+      if (body !== 'null') {
+        body = JSON.parse(body);
+        artists.find(o => o.name === body.name).dbBandId = body.id;
+
+        Request({
+          method: "GET",
+          url: "http://localhost:3000/api/userband/" + body.id
+        }, function (ubError, ubRes, ubBody) {
+          ubBody = JSON.parse(ubBody);
+
+          //artists.find(o => o.name === body.name).rating = { one: 0, two: 0, three: 0, four: 0, five: 0 }
+          if (ubBody !== null) {
+            for (let i = 0; i < ubBody.length; i++) {
+              switch (ubBody[i].rating) {
+                case 1:
+                  artists.find(o => o.name === body.name).rating.one++;
+                  break;
+                case 2:
+                  artists.find(o => o.name === body.name).rating.two++;
+                  break;
+                case 3:
+                  artists.find(o => o.name === body.name).rating.three++;
+                  break;
+                case 4:
+                  artists.find(o => o.name === body.name).rating.four++;
+                  break;
+                case 5:
+                  artists.find(o => o.name === body.name).rating.five++;
+                  break;
+              }
+            }
+          }
+
+          BandSetup(artists, ++count, resu);
+        });
+      } else {
+        BandSetup(artists, ++count, resu);
+      }
+
+    });
+  }
+
 
   app.post("/mapResult", function (req, res) {
     let bandName = req.body.bandName;
@@ -51,9 +111,9 @@ module.exports = function (app) {
     })
   })
 
-  app.get("/songs", function(req, res){
+  app.get("/songs", function (req, res) {
     const id = req.query.id;
-    spotifyApi.getTopTracks(id, function(tracks){
+    spotifyApi.getTopTracks(id, function (tracks) {
       res.json(tracks);
     })
   })
