@@ -81,7 +81,6 @@ $(document).on("click", ".db-rating", function () {
       method: "GET",
       url: "api/band/byname/" + bandName
     }).then(function (band) {
-      console.log(band);
       //band exists
       if (band === null) {
         $.ajax({
@@ -127,7 +126,6 @@ $(document).on("click", "#btn-like", function () {
       method: "GET",
       url: "api/band/byname/" + bandName
     }).then(function (band) {
-      console.log(band);
       //band exists
       if (band === null) {
         $.ajax({
