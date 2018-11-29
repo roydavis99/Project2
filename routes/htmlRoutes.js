@@ -36,11 +36,32 @@ module.exports = function (app) {
 
   });
 
-function FixName(name){
-  name = name.replace('&',"");
-  name = name.replace("/", "");
-  return name;
-}
+  function FixName(name) {
+    name = name.replace('&', "");
+    name = name.replace("/", "");
+    name = name.replace("@", "");
+    name = name.replace("#", "");
+    name = name.replace("$", "");
+    name = name.replace("%", "");
+    name = name.replace("^", "");
+    name = name.replace("*", "");
+    name = name.replace("(", "");
+    name = name.replace(")", "");
+    name = name.replace("[", "");
+    name = name.replace("{", "");
+    name = name.replace("}", "");
+    name = name.replace("]", "");
+    name = name.replace("|", "");
+    name = name.replace("\\", "");
+    name = name.replace(":", "");
+    name = name.replace(";", "");
+    name = name.replace("?", "");
+    name = name.replace("<", "");
+    name = name.replace(">", "");
+    name = name.replace("`", "");
+    name = name.replace("~", "");
+    return name;
+  }
 
   function BandSetup(artists, count, resu) {
     console.log(count + " " + artists.length);
@@ -52,50 +73,54 @@ function FixName(name){
     }
     artists[count].rating = { one: 0, two: 0, three: 0, four: 0, five: 0 };
     artists[count].dbBandId = null;
-    Request({
-      method: 'GET',
-      url: 'http://localhost:3000/api/band/byname/' + FixName(artists[count].name)
-    }, function (err, res, body) {
-      if (body !== 'null') {
-        body = JSON.parse(body);
-        artists.find(o => FixName(o.name) === body.name).dbBandId = body.id;
+    try {
+      Request({
+        method: 'GET',
+        url: 'http://localhost:3000/api/band/byname/' + FixName(artists[count].name)
+      }, function (err, res, body) {
+        if (body !== 'null') {
+          body = JSON.parse(body);
+          artists.find(o => FixName(o.name) === body.name).dbBandId = body.id;
 
-        Request({
-          method: "GET",
-          url: "http://localhost:3000/api/userband/" + body.id
-        }, function (ubError, ubRes, ubBody) {
-          ubBody = JSON.parse(ubBody);
+          Request({
+            method: "GET",
+            url: "http://localhost:3000/api/userband/" + body.id
+          }, function (ubError, ubRes, ubBody) {
+            ubBody = JSON.parse(ubBody);
 
-          //artists.find(o => o.name === body.name).rating = { one: 0, two: 0, three: 0, four: 0, five: 0 }
-          if (ubBody !== null) {
-            for (let i = 0; i < ubBody.length; i++) {
-              switch (ubBody[i].rating) {
-                case 1:
-                  artists.find(o => FixName(o.name) === body.name).rating.one++;
-                  break;
-                case 2:
-                  artists.find(o => FixName(o.name) === body.name).rating.two++;
-                  break;
-                case 3:
-                  artists.find(o => FixName(o.name) === body.name).rating.three++;
-                  break;
-                case 4:
-                  artists.find(o => FixName(o.name) === body.name).rating.four++;
-                  break;
-                case 5:
-                  artists.find(o => FixName(o.name) === body.name).rating.five++;
-                  break;
+            //artists.find(o => o.name === body.name).rating = { one: 0, two: 0, three: 0, four: 0, five: 0 }
+            if (ubBody !== null) {
+              for (let i = 0; i < ubBody.length; i++) {
+                switch (ubBody[i].rating) {
+                  case 1:
+                    artists.find(o => FixName(o.name) === body.name).rating.one++;
+                    break;
+                  case 2:
+                    artists.find(o => FixName(o.name) === body.name).rating.two++;
+                    break;
+                  case 3:
+                    artists.find(o => FixName(o.name) === body.name).rating.three++;
+                    break;
+                  case 4:
+                    artists.find(o => FixName(o.name) === body.name).rating.four++;
+                    break;
+                  case 5:
+                    artists.find(o => FixName(o.name) === body.name).rating.five++;
+                    break;
+                }
               }
             }
-          }
 
+            BandSetup(artists, ++count, resu);
+          });
+        } else {
           BandSetup(artists, ++count, resu);
-        });
-      } else {
-        BandSetup(artists, ++count, resu);
-      }
+        }
 
-    });
+      });
+    } catch (error) {
+      BandSetup(artists, ++count, resu);
+    }
   }
 
 

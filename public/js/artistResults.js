@@ -9,21 +9,21 @@ function CreateLike(userId, bandId) {
       }
     }).then(function (data) {
       console.log(data);
-      
+
     });
   } catch (error) {
     console.log(error);
   }
 }
 
-function UpdateRate(userId, bandId, rate){
+function UpdateRate(userId, bandId, rate) {
   try {
     $.ajax({
       method: "GET",
       url: "api/userband/ids/" + userId + "|" + bandId
     }).then(function (data) {
       console.log(data);
-      if(data !== null){
+      if (data !== null) {
         console.log("put: " + rate);
         $.ajax({
           method: "PUT",
@@ -36,7 +36,7 @@ function UpdateRate(userId, bandId, rate){
         }).then(function (data) {
           console.log(data);
         });
-      }else{
+      } else {
         $.ajax({
           method: "POST",
           url: "api/userband/",
@@ -47,18 +47,39 @@ function UpdateRate(userId, bandId, rate){
           }
         }).then(function (data) {
           console.log(data);
-          
+
         });
       }
     });
-    
+
   } catch (error) {
     console.log(error);
   }
 }
-function FixName(name){
-  name = name.replace("&","");
+function FixName(name) {
+  name = name.replace("&", "");
   name = name.replace("/", "");
+  name = name.replace("@", "");
+  name = name.replace("#", "");
+  name = name.replace("$", "");
+  name = name.replace("%", "");
+  name = name.replace("^", "");
+  name = name.replace("*", "");
+  name = name.replace("(", "");
+  name = name.replace(")", "");
+  name = name.replace("[", "");
+  name = name.replace("{", "");
+  name = name.replace("}", "");
+  name = name.replace("]", "");
+  name = name.replace("|", "");
+  name = name.replace("\\", "");
+  name = name.replace(":", "");
+  name = name.replace(";", "");
+  name = name.replace("?", "");
+  name = name.replace("<", "");
+  name = name.replace(">", "");
+  name = name.replace("`", "");
+  name = name.replace("~", "");
   return name;
 }
 //function CreateBand
