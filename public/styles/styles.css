@@ -41,8 +41,8 @@ body{
   background-color: fuchsia
 }
 
-footer, .push{
-  height: 120px;
+footer, .footer-push{
+  height: 210px;
   width: 100%;
 }
 
