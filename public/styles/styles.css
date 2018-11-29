@@ -1,6 +1,11 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+html{
+  height: 100%;
+}
+
 body{
   /* background-image: url("https://steemitimages.com/p/3HaJVvr6qfoEFgBir1jy4DeK1wwhDm7oNHzc1b8roaJY8MKgxNFQXS6QeWjTctBJbRUt9hZFfHEGaM1jNATBSDbN8HtmB36GqbGGWB8?format=match&mode=fit"); */
   background-image: url("../images/background.jpg");
@@ -9,10 +14,14 @@ body{
   background-position: center;
   background-size: cover;
   position: relative;
+  height: 100%;
 }
 
 #wrapper{
-  position: relative;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto 120px;
 }
 
 .eseeThrew{
@@ -32,9 +41,8 @@ body{
   background-color: fuchsia
 }
 
-footer{
-  position: absolute;
-  bottom: 0;
+footer, .push{
+  height: 120px;
   width: 100%;
 }
 
