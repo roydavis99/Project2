@@ -56,14 +56,18 @@ function UpdateRate(userId, bandId, rate){
     console.log(error);
   }
 }
-
+function FixName(name){
+  name = name.replace("&","");
+  name = name.replace("/", "");
+  return name;
+}
 //function CreateBand
 
 $(document).on("click", ".db-rating", function () {
   //get userid
   var userid = sessionStorage.getItem("sessionId");
   var rate = $(this).attr("data-rating");
-  var bandName = $(this).attr("data-name");
+  var bandName = FixName($(this).attr("data-name"));
   var bandImage = $(this).attr("data-image");
   var bandPage = $(this).attr("data-page");
 
@@ -115,7 +119,7 @@ $(document).on("click", "#btn-like", function () {
   }
 
   //var bandId = $(this).attr("data-id");
-  var bandName = $(this).attr("data-name");
+  var bandName = FixName($(this).attr("data-name"));
   var bandImage = $(this).attr("data-image");
   var bandPage = $(this).attr("data-page");
   try {
