@@ -34,28 +34,50 @@
                         {{#if this.hasImage}}
                         <img class="card-img-top img-fluid" src="{{this.image}}" height="150" width="100"> {{else}}
                         <img class="card-img-top img-fluid" src="/styles/images/band-name.jpeg" height="150" width="100"> {{/if}}
-                        <a href="{{this.page}}" class="btn btn-primary">
-                            <i class="fab fa-spotify"></i>
-                        </a>
-                        <form action="/mapResult" method="POST">
-                            <button type="submit" href="{{this.id}}" class="btn btn-danger tour-map">Map Tour</a>
-                                <input hidden type="text" name="bandName" value="{{this.name}}">
-                        </form>
-                        <button id="btn-like" class="btn btn-success" data-id="{{this.dbBandId}}" data-name="{{this.name}}" data-image="{{this.image}}"
-                            data-page="{{this.page}}">
-                            <i class="far fa-thumbs-up"></i>
-                        </button>
-                        </button>
-                        <div class="btn-group">
-                            <button class="btn btn-warning db-rating" data-rating="1" data-bandid="{{this.dbBandId}}"><i class="fas fa-star-half-alt"></i></button>
-                            <button class="btn btn-warning db-rating" data-rating="2" data-bandid="{{this.dbBandId}}">
-                            <i class="fas fa-star-half-alt"></i></button>
-                            <button class="btn btn-warning db-rating" data-rating="3" data-bandid="{{this.dbBandId}}">
-                            <i class="fas fa-star-half-alt"></i></button>
-                            <button class="btn btn-warning db-rating" data-rating="4" data-bandid="{{this.dbBandId}}">
-                            <i class="fas fa-star-half-alt"></i></button>
-                            <button class="btn btn-warning db-rating" data-rating="5" data-bandid="{{this.dbBandId}}">
-                            <i class="fas fa-star-half-alt"></i></button>
+                        <div class="row">
+                            <div class="col-sm my-1">
+                                <a href="{{this.page}}" class="btn btn-primary">
+                                    <i class="fab fa-spotify"></i>
+                                </a>
+                            </div>
+                            <div class="col-sm">
+                                <form action="/mapResult" method="POST">
+                                    <button type="submit" href="{{this.id}}" class="btn btn-danger tour-map">Map Tour</a>
+                                        <input hidden type="text" name="bandName" value="{{this.name}}">
+                                </form>
+                            </div>
+
+                            <div class="col-sm">
+                                <button id="btn-like" class="btn btn-success" data-id="{{this.dbBandId}}" data-name="{{this.name}}" data-image="{{this.image}}"
+                                    data-page="{{this.page}}">
+                                    <i class="far fa-thumbs-up"></i>
+                                </button>
+                            </div>
+
+                            <div class="col-sm">
+                                <div class="btn-group">
+                                    <button class="btn btn-warning db-rating" data-rating="1" data-bandid="{{this.dbBandId}}" data-name="{{this.name}}" data-image="{{this.image}}"
+                                    data-page="{{this.page}}">
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </button>
+                                    <button class="btn btn-warning db-rating" data-rating="2" data-bandid="{{this.dbBandId}}" data-name="{{this.name}}" data-image="{{this.image}}"
+                                    data-page="{{this.page}}">
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </button>
+                                    <button class="btn btn-warning db-rating" data-rating="3" data-bandid="{{this.dbBandId}}" data-name="{{this.name}}" data-image="{{this.image}}"
+                                    data-page="{{this.page}}">
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </button>
+                                    <button class="btn btn-warning db-rating" data-rating="4" data-bandid="{{this.dbBandId}}" data-name="{{this.name}}" data-image="{{this.image}}"
+                                    data-page="{{this.page}}">
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </button>
+                                    <button class="btn btn-warning db-rating" data-rating="5" data-bandid="{{this.dbBandId}}" data-name="{{this.name}}" data-image="{{this.image}}"
+                                    data-page="{{this.page}}">
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,8 +94,8 @@
                 </div>
                 <div class="card-header" id="heading-three">
                     <h4>
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#three-{{this.id}}"
-                            aria-expanded="false" aria-controls="three-{{this.id}}" value="{{this.id}}">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#three-{{this.id}}" aria-expanded="false"
+                            aria-controls="three-{{this.id}}" value="{{this.id}}">
                             User Ratings
                         </button>
                     </h4>
@@ -83,10 +105,8 @@
                 </div>
             </div>
         </div>
-        <script>chartData = []</script>
-        {{#each this.rating}}
-        <script>chartData.push(JSON.parse({{{ this }}}))</script>
-        {{/each}}
+        <script>chartData = []</script> {{#each this.rating}}
+        <script>chartData.push(JSON.parse({{{ this }}}))</script> {{/each}}
         <script>
             createChart($("#user-ratings-{{{this.id}}}"), {
                 type: 'bar',
@@ -110,8 +130,7 @@
                     }
                 }
             })
-        </script>
-        {{/each}}
+        </script> {{/each}}
     </div>
 </div>
 

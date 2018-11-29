@@ -11,6 +11,19 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/userband/ids/:ids", function (req, res) {
+    
+    var ids = req.params.ids.split("|");
+    db.UserBand.findOne({
+      where: {
+        BandId: ids[1],
+        UserId: ids[0]
+      }
+    }).then(function (dbUserBand) {
+      res.json(dbUserBand);
+    });
+  });
+
   // Create a new user
   app.post("/api/userband", function (req, res) {
     console.log(req);
