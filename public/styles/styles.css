@@ -11,6 +11,10 @@ body{
   position: relative;
 }
 
+#wrapper{
+  position: relative;
+}
+
 .eseeThrew{
   background-color: blue;
   opacity: .5;
